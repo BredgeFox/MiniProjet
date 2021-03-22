@@ -15,17 +15,27 @@ class Role
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $idRole;
+    private $id;
+
+    // /**
+    //  * @ORM\Column(type="integer")
+    //  */
+    // private $idRole;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
     private $libelleRole;
 
-    public function getIdRole(): ?int
-    {
-        return $this->idRole;
-    }
+    // public function getId(): ?int
+    // {
+    //     return $this->id;
+    // }
+    //
+    // public function getIdRole(): ?int
+    // {
+    //     return $this->idRole;
+    // }
 
     public function setIdRole(int $idRole): self
     {

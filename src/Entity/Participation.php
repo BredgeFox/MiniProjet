@@ -12,18 +12,13 @@ class Participation
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Utilisateur::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $idUtilisateur;
 
     /**
+     * @ORM\Id
      * @ORM\ManyToOne(targetEntity=Evenement::class)
      * @ORM\JoinColumn(nullable=false)
      */
@@ -38,11 +33,6 @@ class Participation
      * @ORM\Column(type="boolean")
      */
     private $cotisation;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getIdUtilisateur(): ?Utilisateur
     {

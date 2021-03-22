@@ -17,10 +17,10 @@ class Type
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $idType;
+    // /**
+    //  * @ORM\Column(type="integer")
+    //  */
+    // private $idType;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -32,17 +32,17 @@ class Type
         return $this->id;
     }
 
-    public function getIdType(): ?int
-    {
-        return $this->idType;
-    }
-
-    public function setIdType(int $idType): self
-    {
-        $this->idType = $idType;
-
-        return $this;
-    }
+    // public function getIdType(): ?int
+    // {
+    //     return $this->idType;
+    // }
+    //
+    // public function setIdType(int $idType): self
+    // {
+    //     $this->idType = $idType;
+    //
+    //     return $this;
+    // }
 
     public function getLibelleType(): ?string
     {

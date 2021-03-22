@@ -17,10 +17,10 @@ class Evenement
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $idEvenement;
+    // /**
+    //  * @ORM\Column(type="integer")
+    //  */
+    // private $idEvenement;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -74,17 +74,17 @@ class Evenement
         return $this->id;
     }
 
-    public function getIdEvenement(): ?int
-    {
-        return $this->idEvenement;
-    }
-
-    public function setIdEvenement(int $idEvenement): self
-    {
-        $this->idEvenement = $idEvenement;
-
-        return $this;
-    }
+    // public function getIdEvenement(): ?int
+    // {
+    //     return $this->idEvenement;
+    // }
+    //
+    // public function setIdEvenement(int $idEvenement): self
+    // {
+    //     $this->idEvenement = $idEvenement;
+    //
+    //     return $this;
+    // }
 
     public function getDescription(): ?string
     {

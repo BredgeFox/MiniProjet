@@ -19,10 +19,10 @@ class Utilisateur
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $idUtilisateur;
+    // /**
+    //  * @ORM\Column(type="integer")
+    //  */
+    // private $idUtilisateur;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -60,17 +60,17 @@ class Utilisateur
         return $this->id;
     }
 
-    public function getIdUtilisateur(): ?int
-    {
-        return $this->idUtilisateur;
-    }
-
-    public function setIdUtilisateur(int $idUtilisateur): self
-    {
-        $this->idUtilisateur = $idUtilisateur;
-
-        return $this;
-    }
+    // public function getIdUtilisateur(): ?int
+    // {
+    //     return $this->idUtilisateur;
+    // }
+    //
+    // public function setIdUtilisateur(int $idUtilisateur): self
+    // {
+    //     $this->idUtilisateur = $idUtilisateur;
+    //
+    //     return $this;
+    // }
 
     public function getPrenom(): ?string
     {
