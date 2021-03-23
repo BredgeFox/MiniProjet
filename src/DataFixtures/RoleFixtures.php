@@ -6,7 +6,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class RoleFixtures extends Fixture implements DependentFixtureInterface
+class RoleFixtures extends Fixture
 {
     /**
      * @param ObjectManager $manager

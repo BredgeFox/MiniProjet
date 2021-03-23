@@ -33,8 +33,8 @@ class UtilisateurFixtures extends Fixture implements DependentFixtureInterface
 
         $manager->flush();
 
-        $this->addReference('User-1', $type1);
-        $this->addReference('User-2', $type2);
+        $this->addReference('User-1', $user1);
+        $this->addReference('User-2', $user2);
     }
 
     /**

@@ -18,14 +18,14 @@ class ParticipationFixtures extends Fixture implements DependentFixtureInterface
         $part1 = new Participation();
         $part1  ->setIdUtilisateur($manager->merge($this->getReference('User-2')))
                 ->setIdEvenement($manager->merge($this->getReference('Evenement-1')))
-                ->setCommentaire()
+                ->setCommentaire('')
                 ->setCotisation(true);
         $manager->persist($part1);
 
         $part2 = new Participation();
         $part2  ->setIdUtilisateur($manager->merge($this->getReference('User-2')))
                 ->setIdEvenement($manager->merge($this->getReference('Evenement-1')))
-                ->setCommentaire()
+                ->setCommentaire('')
                 ->setCotisation(true);
         $manager->persist($part2);
 
@@ -39,7 +39,7 @@ class ParticipationFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             UtilisateurFixtures::class,
-            ParticipationFixtures::class,
+            EvenementFixtures::class,
         ];
     }
 }
