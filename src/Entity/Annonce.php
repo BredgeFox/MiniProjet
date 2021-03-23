@@ -17,10 +17,10 @@ class Annonce
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $idAnnonce;
+    // /**
+    //  * @ORM\Column(type="integer")
+    //  */
+    // private $idAnnonce;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -49,17 +49,17 @@ class Annonce
         return $this->id;
     }
 
-    public function getIdAnnonce(): ?int
-    {
-        return $this->idAnnonce;
-    }
-
-    public function setIdAnnonce(int $idAnnonce): self
-    {
-        $this->idAnnonce = $idAnnonce;
-
-        return $this;
-    }
+    // public function getIdAnnonce(): ?int
+    // {
+    //     return $this->idAnnonce;
+    // }
+    //
+    // public function setIdAnnonce(int $idAnnonce): self
+    // {
+    //     $this->idAnnonce = $idAnnonce;
+    //
+    //     return $this;
+    // }
 
     public function getContenu(): ?string
     {

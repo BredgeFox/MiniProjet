@@ -1,12 +1,12 @@
 <?php
 namespace App\DataFixtures;
 
-use App\Entity\Participation;
+use App\Entity\Annonce;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class ParticipationFixtures extends Fixture implements DependentFixtureInterface
+class AnnonceFixtures extends Fixture implements DependentFixtureInterface
 {
     /**
      * @param ObjectManager $manager
@@ -15,19 +15,19 @@ class ParticipationFixtures extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager) : void
     {
-        $part1 = new Participation();
-        $part1  ->setIdUtilisateur($manager->merge($this->getReference('User-2')))
+        $ann1 = new Annonce();
+        $ann1   ->setContenu('Annonce 1')
+                ->setImage('')
                 ->setIdEvenement($manager->merge($this->getReference('Evenement-1')))
-                ->setCommentaire('')
-                ->setCotisation(true);
-        $manager->persist($part1);
+                ->setIdUtilisateur($manager->merge($this->getReference('User-2')));
+        $manager->persist($ann1);
 
-        $part2 = new Participation();
-        $part2  ->setIdUtilisateur($manager->merge($this->getReference('User-1')))
+        $ann2 = new Annonce();
+        $ann2   ->setContenu('Annonce 2')
+                ->setImage('')
                 ->setIdEvenement($manager->merge($this->getReference('Evenement-2')))
-                ->setCommentaire('')
-                ->setCotisation(true);
-        $manager->persist($part2);
+                ->setIdUtilisateur($manager->merge($this->getReference('User-1')));
+        $manager->persist($ann2);
 
         $manager->flush();
     }
