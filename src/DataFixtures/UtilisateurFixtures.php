@@ -31,10 +31,37 @@ class UtilisateurFixtures extends Fixture implements DependentFixtureInterface
                 ->setIdRole($manager->merge($this->getReference('Role-Admin')));
         $manager->persist($user2);
 
+        $user3 = new Utilisateur();
+        $user3  ->setPrenom('Antoine')
+                ->setNom('Dubois')
+                ->setEmail('Antoine@gmail.com')
+                ->setTel('0607080808')
+                ->setIdRole($manager->merge($this->getReference('Role-Admin')));
+        $manager->persist($user3);
+
+        $user4 = new Utilisateur();
+        $user4  ->setPrenom('Mathieu')
+                ->setNom('Dupont')
+                ->setEmail('Mathieu@gmail.com')
+                ->setTel('0607080909')
+                ->setIdRole($manager->merge($this->getReference('Role-Admin')));
+        $manager->persist($user4);
+
+        $user5 = new Utilisateur();
+        $user5  ->setPrenom('Merlin')
+                ->setNom('Enchanteur')
+                ->setEmail('Merlin@gmail.com')
+                ->setTel('0607090909')
+                ->setIdRole($manager->merge($this->getReference('Role-Admin')));
+        $manager->persist($user5);
+
         $manager->flush();
 
         $this->addReference('User-1', $user1);
         $this->addReference('User-2', $user2);
+        $this->addReference('User-3', $user3);
+        $this->addReference('User-4', $user4);
+        $this->addReference('User-5', $user5);
     }
 
     /**

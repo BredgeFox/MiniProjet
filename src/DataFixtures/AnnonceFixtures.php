@@ -29,6 +29,27 @@ class AnnonceFixtures extends Fixture implements DependentFixtureInterface
                 ->setIdUtilisateur($manager->merge($this->getReference('User-1')));
         $manager->persist($ann2);
 
+        $ann3 = new Annonce();
+        $ann3   ->setContenu('Annonce 3')
+                ->setImage('')
+                ->setIdEvenement($manager->merge($this->getReference('Evenement-3')))
+                ->setIdUtilisateur($manager->merge($this->getReference('User-3')));
+        $manager->persist($ann3);
+
+        $ann4 = new Annonce();
+        $ann4   ->setContenu('Annonce 4')
+                ->setImage('')
+                ->setIdEvenement($manager->merge($this->getReference('Evenement-4')))
+                ->setIdUtilisateur($manager->merge($this->getReference('User-4')));
+        $manager->persist($ann4);
+
+        $ann5 = new Annonce();
+        $ann5   ->setContenu('Annonce 5')
+                ->setImage('')
+                ->setIdEvenement($manager->merge($this->getReference('Evenement-5')))
+                ->setIdUtilisateur($manager->merge($this->getReference('User-5')));
+        $manager->persist($ann5);
+
         $manager->flush();
     }
 

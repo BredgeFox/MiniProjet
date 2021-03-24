@@ -49,10 +49,53 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
                 ->setIdOrganisateur($manager->merge($this->getReference('User-1')));
         $manager->persist($event2);
 
+        $event3 ->setDescription($description)
+                ->setNbPlace(null)
+                ->setVille("Paris")
+                ->setAdresse("2 rue mont parnasse")
+                ->setDateDebut(new \DateTime('10/04/2021 18:00:00'))
+                ->setDateFin(new \DateTime('10/04/2021 23:59:59'))
+                // ->setDateDebut(DATE(DateTime()))
+                // ->setDateFin(DATE(DateTime()))
+                ->setCotisation(0)
+                ->setIdType($manager->merge($this->getReference('Type-LAN')))
+                ->setIdOrganisateur($manager->merge($this->getReference('User-3')));
+        $manager->persist($event3);
+
+        $event4 ->setDescription($description)
+                ->setNbPlace(null)
+                ->setVille("Lyon")
+                ->setAdresse("2 rue de la montagne")
+                ->setDateDebut(new \DateTime('10/04/2021 18:00:00'))
+                ->setDateFin(new \DateTime('10/04/2021 23:59:59'))
+                // ->setDateDebut(DATE(DateTime()))
+                // ->setDateFin(DATE(DateTime()))
+                ->setCotisation(0)
+                ->setIdType($manager->merge($this->getReference('Type-LAN')))
+                ->setIdOrganisateur($manager->merge($this->getReference('User-4')));
+        $manager->persist($event4);
+
+        $event5 ->setDescription($description)
+                ->setNbPlace(null)
+                ->setVille("Nice")
+                ->setAdresse("Rue de nice")
+                ->setDateDebut(new \DateTime('10/04/2021 18:00:00'))
+                ->setDateFin(new \DateTime('10/04/2021 23:59:59'))
+                // ->setDateDebut(DATE(DateTime()))
+                // ->setDateFin(DATE(DateTime()))
+                ->setCotisation(0)
+                ->setIdType($manager->merge($this->getReference('Type-LAN')))
+                ->setIdOrganisateur($manager->merge($this->getReference('User-5')));
+        $manager->persist($event5);
+
         $manager->flush();
 
         $this->addReference('Evenement-1', $event1);
         $this->addReference('Evenement-2', $event2);
+        $this->addReference('Evenement-1', $event3);
+        $this->addReference('Evenement-2', $event4);
+        $this->addReference('Evenement-2', $event5);
+
     }
 
     /**
