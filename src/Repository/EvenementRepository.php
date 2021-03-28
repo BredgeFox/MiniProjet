@@ -47,4 +47,16 @@ class EvenementRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @return Evenement[]
+     */
+    public function getEvenementNonExpires()
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->where('s.dateFin > :date')
+            ->setParameter('date', new \DateTime())
+            ->orderBy('s.dateDebut', 'DESC');
+        return $qb->getQuery()->getResult();
+    }
 }

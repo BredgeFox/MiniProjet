@@ -193,4 +193,14 @@ class Evenement
 
         return $this;
     }
+
+    // /**
+    //  * @ORM\PrePersist()
+    //  */
+    // public function prePersist()
+    // {
+    //  if (!$this->dateFin) {
+    //  $this->dateFin = (clone $this->dateFin)->modify($this->dateDebut);
+    //  }
+    // }
 }

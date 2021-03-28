@@ -2,32 +2,74 @@
 
 namespace App\Controller;
 
+use App\Entity\Evenement;
+use App\Repository\EvenementRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class EvenementController extends AbstractController
 {
-    /**
-     * @Route("/evenement", name="evenement")
-     */
-    public function index(): Response
-    {
-        return $this->render('evenement/index.html.twig', [
-            'controller_name' => 'EvenementController',
-        ]);
-    }
+    // /**
+    //  * @Route("/evenement", name="evenement")
+    //  */
+    // public function index(): Response
+    // {
+    //     return $this->render('evenement/index.html.twig', [
+    //         'controller_name' => 'EvenementController',
+    //     ]);
+    // }
+
+    // /**
+    //  * Lister tous les evenement.
+    //  * @Route("/evenement/", name="evenement.list")
+    //  * @return Response
+    //  */
+    // public function list() : Response
+    // {
+    //  $evenements = $this->getDoctrine()->getRepository(Evenement::class)->findAll();
+    //  return $this->render('evenement/list.html.twig', [
+    //  'evenements' => $evenements,
+    //  ]);
+    // }
 
     /**
-     * Lister tous les evenement.
-     * @Route("/evenement/", name="evenement.list")
+     * Lister uniquement les evenements qui n'on pas encore expiré !
+     * @Route("/evenement", name="evenement.list")
      * @return Response
      */
-    public function list() : Response
+    public function list(EvenementRepository $er) : Response
     {
-     $evenements = $this->getDoctrine()->getRepository(Evenement::class)->findAll();
-     return $this->render('evenement/list.html.twig', [
-     'evenements' => $evenements,
+      $evenements = $er->getEvenementNonExpires();
+      return $this->render(
+        'evenement/list.html.twig',
+        ['evenements' => $evenements]
+      );
+    }
+    // public function list(EntityManagerInterface $em) : Response
+    // {
+    //  $query = $em->createQuery(
+    //  'SELECT s FROM App:Evenement s WHERE s.dateFin > :date'
+    //  )->setParameter('date', new \DateTime());
+    //  $evenements = $query->getResult();
+    //  return $this->render('evenement/list.html.twig', [
+    //  'evenements' => $evenements,
+    //  ]);
+    // }
+
+
+
+    /**
+     * Chercher et afficher un evenement.
+     * @Route("/evenement/{id}", name="evenement.show", requirements={"id" = "\d+"})
+     * @param Evenement $evenement
+     * @return Response
+     */
+    public function show(Evenement $evenement) : Response
+    {
+     return $this->render('evenement/show.html.twig', [
+     'evenement' => $evenement,
      ]);
     }
 }

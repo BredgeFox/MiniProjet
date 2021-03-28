@@ -47,4 +47,18 @@ class TypeRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @return Type[]
+     */
+    public function GetTypeAvecEvenementNonExpires()
+    {
+        return $this->createQueryBuilder('t')
+            ->select('t')
+            ->innerJoin('t.evenement','s')
+            ->where('s.dateFin > :date')
+            ->setParameter('date',new \DateTime())
+            ->getQuery()
+            ->getResult();
+    }
 }
