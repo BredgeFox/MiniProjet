@@ -51,6 +51,7 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
                 ->setIdOrganisateur($manager->merge($this->getReference('User-1')));
         $manager->persist($event2);
 
+        $event3 = new Evenement();
         $event3 ->setTitre('Evenement 3')
                 ->setDescription($description)
                 ->setNbPlace(null)
@@ -65,6 +66,7 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
                 ->setIdOrganisateur($manager->merge($this->getReference('User-3')));
         $manager->persist($event3);
 
+        $event4 = new Evenement();
         $event4 ->setTitre('Evenement 4')
                 ->setDescription($description)
                 ->setNbPlace(null)
@@ -79,6 +81,7 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
                 ->setIdOrganisateur($manager->merge($this->getReference('User-4')));
         $manager->persist($event4);
 
+        $event5 = new Evenement();
         $event5 ->setTitre('Evenement 5')
                 ->setDescription($description)
                 ->setNbPlace(null)
