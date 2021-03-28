@@ -23,6 +23,11 @@ class Evenement
     // private $idEvenement;
 
     /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $titre;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $description;
@@ -85,6 +90,18 @@ class Evenement
     //
     //     return $this;
     // }
+
+    public function getTitre(): ?string
+    {
+        return $this->titre;
+    }
+
+    public function setTitre(string $titre): self
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
 
     public function getDescription(): ?string
     {
@@ -203,4 +220,5 @@ class Evenement
     //  $this->dateFin = (clone $this->dateFin)->modify($this->dateDebut);
     //  }
     // }
+
 }

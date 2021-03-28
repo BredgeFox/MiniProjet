@@ -19,7 +19,8 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
         $description = <<< _lorem
         Pique nique en plein air, apporté vos casse-croute et éventuelement de quoi pratique une ou deux activités collectives.
         _lorem;
-        $event1 ->setDescription($description)
+        $event1 ->setTitre('Evenement 1')
+                ->setDescription($description)
                 ->setNbPlace(null)
                 ->setVille("Grandchamp des fontaines")
                 ->setAdresse("Plan d'eau du Brossais")
@@ -36,7 +37,8 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
         $description = <<< _lorem
         Une nuit du hack est organisé sur les poste de la bibliothèque univercitaire, venez vous confronter a vos camarade de différente promotion pour savoir qui sont les meilleurs hackeurs
         _lorem;
-        $event2 ->setDescription($description)
+        $event2 ->setTitre('Evenement 2')
+                ->setDescription($description)
                 ->setNbPlace(null)
                 ->setVille("Nantes")
                 ->setAdresse("2 Chemin de la Houssinière")
@@ -49,7 +51,8 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
                 ->setIdOrganisateur($manager->merge($this->getReference('User-1')));
         $manager->persist($event2);
 
-        $event3 ->setDescription($description)
+        $event3 ->setTitre('Evenement 3')
+                ->setDescription($description)
                 ->setNbPlace(null)
                 ->setVille("Paris")
                 ->setAdresse("2 rue mont parnasse")
@@ -62,7 +65,8 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
                 ->setIdOrganisateur($manager->merge($this->getReference('User-3')));
         $manager->persist($event3);
 
-        $event4 ->setDescription($description)
+        $event4 ->setTitre('Evenement 4')
+                ->setDescription($description)
                 ->setNbPlace(null)
                 ->setVille("Lyon")
                 ->setAdresse("2 rue de la montagne")
@@ -75,7 +79,8 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
                 ->setIdOrganisateur($manager->merge($this->getReference('User-4')));
         $manager->persist($event4);
 
-        $event5 ->setDescription($description)
+        $event5 ->setTitre('Evenement 5')
+                ->setDescription($description)
                 ->setNbPlace(null)
                 ->setVille("Nice")
                 ->setAdresse("Rue de nice")
@@ -92,9 +97,9 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
 
         $this->addReference('Evenement-1', $event1);
         $this->addReference('Evenement-2', $event2);
-        $this->addReference('Evenement-1', $event3);
-        $this->addReference('Evenement-2', $event4);
-        $this->addReference('Evenement-2', $event5);
+        $this->addReference('Evenement-3', $event3);
+        $this->addReference('Evenement-4', $event4);
+        $this->addReference('Evenement-5', $event5);
 
     }
 
