@@ -9,10 +9,9 @@
             <th class="active text-center">Description</th>
             <th class="active text-center">Ville</th>
             <th class="active text-center">Cotisation</th>
-            <th class="active text-center">Type</th>
         </tr>
 
-        {% for evenement in evenements %}
+        {% for evenement in type.evenements %}
             <tr>
                 <td>
                     <a href="{{ path('evenement.show', {id: evenement.id}) }}">
@@ -22,10 +21,10 @@
                 <td>{{ evenement.description }}</td>
                 <td>{{ evenement.ville }}</td>
                 <td>{{ evenement.cotisation }}</td>
-                <td>{{ evenement.idType.libelleType }}</td>
             </tr>
         {% endfor %}
 
     </table>
     {% endfor %}
+
 {% endblock %}

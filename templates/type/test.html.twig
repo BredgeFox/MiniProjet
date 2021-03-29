@@ -2,18 +2,23 @@
 
 {% block body %}
     <pre>
-    {{ dump(evenements) }}
+    {{ dump(types) }}
     </pre>
 
-    {% for evenement in evenements %}
+    {% for type in types %}
 
         <pre>
-            {{ dump(evenement) }}
+            {{ dump(type) }}
         </pre>
 
-        <pre>
-            {{ dump(evenement.) }}
-        </pre>
+        {% for evenement in type.evenements %}
+
+            <pre>
+                {{ dump(evenement) }}
+            </pre>
+
+        {% endfor %}
 
     {% endfor %}
+
 {% endblock %}

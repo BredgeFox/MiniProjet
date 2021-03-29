@@ -7,6 +7,7 @@ use App\Repository\TypeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class TypeController extends AbstractController
 {
@@ -30,14 +31,21 @@ class TypeController extends AbstractController
     {
         $types = $tr->GetTypeAvecEvenementNonExpires();
 
+        $vretour = new ArrayCollection();
+        $typeloop = new ArrayCollection();
+
         foreach($types as $type)
         {
-            $type['evenements'] = $type->GetEvenementNonExpires();
+            $vretour[] = array(
+                'id' => $type->getId(),
+                'libelleType' => $type->getLibelleType(),
+                'evenements' => $type->GetEvenementNonExpires()
+            );
         }
 
         return $this->render(
             'type/list.html.twig',
-            ['types' => $types]
+            ['types' => $vretour]
         );
     }
 

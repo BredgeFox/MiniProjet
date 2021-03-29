@@ -45,6 +45,16 @@ class TypeFixtures extends Fixture
         $type6 ->setLibelleType('Indor');
         $manager->persist($type6);
 
+        //SEPTIEME TUPPLE
+        $type7 = new Type();
+        $type7 ->setLibelleType('Danse');
+        $manager->persist($type7);
+
+        //HUITIEME TUPPLE
+        $type8 = new Type();
+        $type8 ->setLibelleType('Buvette');
+        $manager->persist($type8);
+
         $manager->flush();
 
         $this->addReference('Type-Plein-air', $type1);
@@ -53,6 +63,8 @@ class TypeFixtures extends Fixture
         $this->addReference('Type-Karaoké', $type4);
         $this->addReference('Type-Blind-test', $type5);
         $this->addReference('Type-Indor', $type6);
+        $this->addReference('Type-Danse', $type7);
+        $this->addReference('Type-Buvette', $type8);
     }
 
 }

@@ -26,8 +26,6 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
                 ->setAdresse("Plan d'eau du Brossais")
                 ->setDateDebut(new \DateTime('10/04/2021 14:00:00'))
                 ->setDateFin(new \DateTime('10/04/2021 18:00:00'))
-                // ->setDateDebut(DATE(DateTime()))
-                // ->setDateFin(DATE(DateTime()))
                 ->setCotisation(0)
                 ->setIdType($manager->merge($this->getReference('Type-Plein-air')))
                 ->setIdOrganisateur($manager->merge($this->getReference('User-2')));
@@ -44,14 +42,13 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
                 ->setAdresse("2 Chemin de la Houssinière")
                 ->setDateDebut(new \DateTime('10/04/2021 18:00:00'))
                 ->setDateFin(new \DateTime('10/04/2021 23:59:59'))
-                // ->setDateDebut(DATE(DateTime()))
-                // ->setDateFin(DATE(DateTime()))
                 ->setCotisation(0)
                 ->setIdType($manager->merge($this->getReference('Type-LAN')))
                 ->setIdOrganisateur($manager->merge($this->getReference('User-1')));
         $manager->persist($event2);
 
         $event3 = new Evenement();
+        //L'absence de modification de $description est volontaire
         $event3 ->setTitre('Evenement 3')
                 ->setDescription($description)
                 ->setNbPlace(null)
@@ -59,14 +56,13 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
                 ->setAdresse("2 rue mont parnasse")
                 ->setDateDebut(new \DateTime('10/04/2021 18:00:00'))
                 ->setDateFin(new \DateTime('10/04/2021 23:59:59'))
-                // ->setDateDebut(DATE(DateTime()))
-                // ->setDateFin(DATE(DateTime()))
                 ->setCotisation(0)
                 ->setIdType($manager->merge($this->getReference('Type-LAN')))
                 ->setIdOrganisateur($manager->merge($this->getReference('User-3')));
         $manager->persist($event3);
 
         $event4 = new Evenement();
+        //L'absence de modification de $description est volontaire
         $event4 ->setTitre('Evenement 4')
                 ->setDescription($description)
                 ->setNbPlace(null)
@@ -74,14 +70,13 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
                 ->setAdresse("2 rue de la montagne")
                 ->setDateDebut(new \DateTime('10/04/2021 18:00:00'))
                 ->setDateFin(new \DateTime('10/04/2021 23:59:59'))
-                // ->setDateDebut(DATE(DateTime()))
-                // ->setDateFin(DATE(DateTime()))
                 ->setCotisation(0)
                 ->setIdType($manager->merge($this->getReference('Type-LAN')))
                 ->setIdOrganisateur($manager->merge($this->getReference('User-4')));
         $manager->persist($event4);
 
         $event5 = new Evenement();
+        //L'absence de modification de $description est volontaire
         $event5 ->setTitre('Evenement 5')
                 ->setDescription($description)
                 ->setNbPlace(null)
@@ -89,8 +84,6 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
                 ->setAdresse("Rue de nice")
                 ->setDateDebut(new \DateTime('10/04/2021 18:00:00'))
                 ->setDateFin(new \DateTime('10/04/2021 23:59:59'))
-                // ->setDateDebut(DATE(DateTime()))
-                // ->setDateFin(DATE(DateTime()))
                 ->setCotisation(0)
                 ->setIdType($manager->merge($this->getReference('Type-LAN')))
                 ->setIdOrganisateur($manager->merge($this->getReference('User-5')));
@@ -105,49 +98,43 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
                 ->setNbPlace(null)
                 ->setVille("Internet")
                 ->setAdresse("GestionEvenementANEM.fr")
-                ->setDateDebut(new \DateTime('07/03/2021 14:00:00'))
-                ->setDateFin(new \DateTime('07/03/2021 18:00:00'))
-                // ->setDateDebut(DATE(DateTime()))
-                // ->setDateFin(DATE(DateTime()))
+                ->setDateDebut(new \DateTime('03/07/2021 14:00:00'))
+                ->setDateFin(new \DateTime('03/07/2021 18:00:00'))
                 ->setCotisation(0)
-                ->setIdType($manager->merge($this->getReference('Type-Plein-air')))
+                ->setIdType($manager->merge($this->getReference('Type-LAN')))
                 ->setIdOrganisateur($manager->merge($this->getReference('User-2')));
         $manager->persist($event6);
 
         $event7 = new Evenement();
         $description = <<< _lorem
-        Soirée appero
+        Soirée appérétif et non d'intégration, entre étudiant de l'université pour le début d'année
         _lorem;
-        $event7 ->setTitre("Soirée")
+        $event7 ->setTitre("Soirée apprérétif")
                 ->setDescription($description)
                 ->setNbPlace(null)
                 ->setVille("Londres")
                 ->setAdresse("Rue de londres")
-                ->setDateDebut(new \DateTime('20/04/2021 14:00:00'))
-                ->setDateFin(new \DateTime('25/04/2021 18:00:00'))
-                // ->setDateDebut(DATE(DateTime()))
-                // ->setDateFin(DATE(DateTime()))
+                ->setDateDebut(new \DateTime('10/10/2020 14:00:00'))
+                ->setDateFin(new \DateTime('10/10/2020 18:00:00'))
                 ->setCotisation(0)
-                ->setIdType($manager->merge($this->getReference('Type-Plein-air')))
+                ->setIdType($manager->merge($this->getReference('Type-Buvette')))
                 ->setIdOrganisateur($manager->merge($this->getReference('User-2')));
-        $manager->persist($event6);
+        $manager->persist($event7);
 
         $event8 = new Evenement();
         $description = <<< _lorem
-        Bal de princesse
+        Bal de costumé de fin d'année univercitaire, avec pour thématique les princessses. Surprenez-nous !
         _lorem;
         $event8 ->setTitre("Bal")
                 ->setDescription($description)
                 ->setNbPlace(null)
                 ->setVille("Rome")
                 ->setAdresse("Rue de Rome")
-                ->setDateDebut(new \DateTime('20/07/2021 18:00:00'))
-                ->setDateFin(new \DateTime('25/07/2021 23:59:59'))
-                // ->setDateDebut(DATE(DateTime()))
-                // ->setDateFin(DATE(DateTime()))
+                ->setDateDebut(new \DateTime('07/15/2021 14:00:00'))
+                ->setDateFin(new \DateTime('07/20/2021 18:00:00'))
                 ->setCotisation(20)
-                ->setIdType($manager->merge($this->getReference('Type-LAN')))
-                ->setIdOrganisateur($manager->merge($this->getReference('User-8')));
+                ->setIdType($manager->merge($this->getReference('Type-Danse')))
+                ->setIdOrganisateur($manager->merge($this->getReference('User-12')));
         $manager->persist($event8);
 
         $event9 = new Evenement();
@@ -159,20 +146,17 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
                 ->setNbPlace(null)
                 ->setVille("Madrid")
                 ->setAdresse("Rue de Madrid")
-                ->setDateDebut(new \DateTime('20/07/2021 18:00:00'))
-                ->setDateFin(new \DateTime('25/07/2021 23:59:59'))
-                // ->setDateDebut(DATE(DateTime()))
-                // ->setDateFin(DATE(DateTime()))
+                ->setDateDebut(new \DateTime('07/20/2021 18:00:00'))
+                ->setDateFin(new \DateTime('07/25/2021 23:59:59'))
                 ->setCotisation(30)
-                ->setIdType($manager->merge($this->getReference('Type-LAN')))
-                ->setIdOrganisateur($manager->merge($this->getReference('User-9')));
+                ->setIdType($manager->merge($this->getReference('Type-Plein-air')))
+                ->setIdOrganisateur($manager->merge($this->getReference('User-12')));
         $manager->persist($event9);
 
         $manager->flush();
 
         $this->addReference('Evenement-1', $event1);
         $this->addReference('Evenement-2', $event2);
-<<<<<<< HEAD
         $this->addReference('Evenement-3', $event3);
         $this->addReference('Evenement-4', $event4);
         $this->addReference('Evenement-5', $event5);
@@ -180,12 +164,6 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
         $this->addReference('Evenement-7', $event7);
         $this->addReference('Evenement-8', $event8);
         $this->addReference('Evenement-9', $event9);
-=======
-        $this->addReference('Evenement-3', $event3);
-        $this->addReference('Evenement-4', $event4);
-        $this->addReference('Evenement-5', $event5);
-        $this->addReference('Evenement-6', $event6);
->>>>>>> 7c9713dc2c28062caa4cc583ef313a78ecd81550
 
     }
 

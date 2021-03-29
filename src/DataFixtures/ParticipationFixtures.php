@@ -141,6 +141,20 @@ class ParticipationFixtures extends Fixture implements DependentFixtureInterface
                 ->setCotisation(true);
         $manager->persist($part18);
 
+        $part19 = new Participation();
+        $part19  ->setIdUtilisateur($manager->merge($this->getReference('User-12')))
+                ->setIdEvenement($manager->merge($this->getReference('Evenement-8')))
+                ->setCommentaire('')
+                ->setCotisation(true);
+        $manager->persist($part19);
+
+        $part20 = new Participation();
+        $part20  ->setIdUtilisateur($manager->merge($this->getReference('User-12')))
+                ->setIdEvenement($manager->merge($this->getReference('Evenement-9')))
+                ->setCommentaire('')
+                ->setCotisation(true);
+        $manager->persist($part20);
+
         $manager->flush();
     }
 

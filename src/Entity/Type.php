@@ -80,49 +80,36 @@ class Type
     /**
      * @return Collection|Evenement[]
      */
-    public function GetEvenementNonExpires(TypeRepository $tr): Collection
+    public function GetEvenementNonExpires(): Collection
     {
-        //$vretour = array();
+        $vretour = new ArrayCollection();
 
-        // foreach($this->getEvenements() as $key => $evenement)
-        // {
-        //     /*if($evenement['dateDebut'] > (new \DateTime)->format('Y/d/m'))
-        //     {
-        //         $vretour[] = $evenement;
-        //     }*/
-        //
-        //     foreach($evenement as $champ => $value)
-        //     {
-        //
-        //     }
-        // }
-        //
-        // return $this->evenements;
+        foreach($this->getEvenements() as $key => $evenement)
+        {
+            if($evenement->getDateDebut() > (new \DateTime)->format('Y/d/m'))
+             {
+                 $vretour[] = $evenement;
+             }
+        }
 
-        return $tr->GetEvenementNonExpires($this);
+        return $vretour;
     }
 
     /**
      * @return Collection|Evenement[]
      */
-    public function GetEvenementExpires(TypeRepository $tr): Collection
+    public function GetEvenementExpires(/*TypeRepository $tr*/): Collection
     {
-        //$vretour = array();
+        $vretour = new ArrayCollection();
 
-        // foreach($this->getEvenements() as $key => $evenement)
-        // {
-        //     /*if($evenement['dateDebut'] <= (new \DateTime)->format('Y/d/m'))
-        //     {
-        //         $vretour[] = $evenement;
-        //     }*/
-        //
-        //     foreach($evenement as $champ => $value)
-        //     {
-        //
-        //     }
-        // }
-        //
-        // return $this->evenements;
+        foreach($this->getEvenements() as $key => $evenement) {
+            if ($evenement->getDateDebut() <= (new \DateTime)->format('Y/d/m'))
+            {
+                $vretour[] = $evenement;
+            }
+        }
+
+        return $vretour;
     }
 
     public function addEvenement(Evenement $evenement): self
