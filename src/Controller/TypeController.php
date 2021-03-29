@@ -52,10 +52,10 @@ class TypeController extends AbstractController
     /**
      * Lister uniquement les types comportant des evenements qui
      * on déjà expiré ainsi que leurs evenements !
-     * @Route("/type", name="type.listExpire")
+     * @Route("/type", name="type.expire")
      * @return Response
      */
-    public function listExpire(TypeRepository $tr) : Response
+    public function expire(TypeRepository $tr) : Response
     {
         $types = $tr->GetTypeAvecEvenementExpires();
 

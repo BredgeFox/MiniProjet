@@ -83,3 +83,5 @@ class TypeRepository extends ServiceEntityRepository
                     ->getResult();
     }
 }
+
+?>

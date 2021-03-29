@@ -55,7 +55,7 @@ class EvenementRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('e')
             ->where('e.dateFin > :date')
-            ->setParameter('date', new \DateTime)
+            ->setParameter('date', new \DateTime())
             ->orderBy('e.dateDebut', 'DESC');
         return $qb->getQuery()->getResult();
     }
@@ -73,3 +73,5 @@ class EvenementRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 }
+
+?>

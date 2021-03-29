@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="alert alert-danger">
+        <strong>Avertissement !</strong> Vous êtes en train de supprimer l'evenement suivant :
+
+        <p>
+            <small> Evenement de type : <i>{{ evenement.idType.libelleType }}</i></small>
+        </p>
+        <p>
+        <H4>
+            <p><strong><u>Description</u></strong></p>
+            <p style="border:solid; border-width:2px; border-color:#868686; padding:5px;">{{ evenement.description|nl2br }}</p>
+        </H4>
+        </p>
+        <p>
+            <strong>Lieu : </strong>{{ evenement.adresse }} <i>({{ evenement.ville }})</i>
+        </p>
+        <p>
+            <strong>Cotisation :</strong> {{ evenement.cotisation }} €
+        </p>
+        <p>
+            <strong>Début de l'événement :</strong> {{ evenement.dateDebut|date('m/d/Y') }}
+        </p>
+        <p>
+            <strong>Fin de l'événement :</strong> {{ evenement.dateFin|date('m/d/Y') }}
+        </p>
+
+        {% if evenement.nbPlace%} {% if evenement.nbPlace < 0 %}
+            <p>
+                <strong>Nombre de place maximum :</strong> {{ evenement.nbPlace }}
+            </p>
+        {% endif %} {% endif %}
+    </div>
+    <div class="collapse navbar-collapse">
+        {{ form_start(form, {'attr': {'class': 'navbar-form navbar-left'}}) }}
+        {{ form_widget(form) }}
+        <a href="{{ path('evenement.list') }}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>Annuler</a>
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes vous sûr ??')">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            Supprimer
+        </button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

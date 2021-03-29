@@ -33,13 +33,13 @@
 
             <div class="navbar-brand">|</div>
 
-            <a class="navbar-brand" href="{{ path('evenement.listExpire') }}">
+            <a class="navbar-brand" href="{{ path('evenement.expire') }}">
                 Événéments passé
             </a>
 
             <div class="navbar-brand">|</div>
 
-            <a class="navbar-brand" href="{{ path('type.listExpire') }}">
+            <a class="navbar-brand" href="{{ path('type.expire') }}">
                 Événéments passé par type
             </a>
         </div>
@@ -49,6 +49,11 @@
                 <li>
                     <div>
                         <a href="#" class="btn btn-default navbar-btn">Connexion</a>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href="{{ path('evenement.create') }}" class="btn btn-default navbar-btn">Création d'un événement</a>
                     </div>
                 </li>
             </ul>
