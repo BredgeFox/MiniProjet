@@ -47,4 +47,29 @@ class EvenementRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @return Evenement[]
+     */
+    public function getEvenementNonExpires()
+    {
+        $qb = $this->createQueryBuilder('e')
+            ->where('e.dateFin > :date')
+            ->setParameter('date', new \DateTime)
+            ->orderBy('e.dateDebut', 'DESC');
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @return Evenement[]
+     */
+    public function getEvenementExpires()
+    {
+        $qb = $this->createQueryBuilder('e')
+            ->where('e.dateFin < :date')
+            ->setParameter('date', new \DateTime(), \Doctrine\DBAL\Types\Type::DATETIME)
+            ->orderBy('e.dateDebut', 'DESC');
+
+        return $qb->getQuery()->getResult();
+    }
 }

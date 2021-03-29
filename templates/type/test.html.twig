@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <pre>
+    {{ dump(evenements) }}
+    </pre>
+
+    {% for evenement in evenements %}
+
+        <pre>
+            {{ dump(evenement) }}
+        </pre>
+
+        <pre>
+            {{ dump(evenement.) }}
+        </pre>
+
+    {% endfor %}
+{% endblock %}

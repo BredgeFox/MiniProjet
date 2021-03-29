@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EvenementRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +23,11 @@ class Evenement
     //  * @ORM\Column(type="integer")
     //  */
     // private $idEvenement;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -58,16 +65,32 @@ class Evenement
     private $cotisation;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Type::class)
+     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="evenements")
      * @ORM\JoinColumn(nullable=false)
      */
     private $idType;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Utilisateur::class)
+     * @ORM\ManyToOne(targetEntity=Utilisateur::class, inversedBy="evenements")
      * @ORM\JoinColumn(nullable=false)
      */
     private $idOrganisateur;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Participation::class, mappedBy="idEvenement")
+     */
+    private $participations;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="idEvenement")
+     */
+    private $annonces;
+
+    public function __construct()
+    {
+        $this->participations = new ArrayCollection();
+        $this->annonces = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -85,6 +108,18 @@ class Evenement
     //
     //     return $this;
     // }
+
+    public function getTitre(): ?string
+    {
+        return $this->titre;
+    }
+
+    public function setTitre(string $titre): self
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
 
     public function getDescription(): ?string
     {
@@ -170,6 +205,16 @@ class Evenement
         return $this;
     }
 
+    // /**
+    //  * @ORM\PrePersist()
+    //  */
+    // public function prePersist()
+    // {
+    //  if (!$this->dateFin) {
+    //  $this->dateFin = (clone $this->dateFin)->modify($this->dateDebut);
+    //  }
+    // }
+
     public function getIdType(): ?Type
     {
         return $this->idType;
@@ -193,4 +238,65 @@ class Evenement
 
         return $this;
     }
+
+    /**
+     * @return Collection|Participation[]
+     */
+    public function getParticipations(): Collection
+    {
+        return $this->participations;
+    }
+
+    public function addParticipation(Participation $participation): self
+    {
+        if (!$this->participations->contains($participation)) {
+            $this->participations[] = $participation;
+            $participation->setIdEvenement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipation(Participation $participation): self
+    {
+        if ($this->participations->removeElement($participation)) {
+            // set the owning side to null (unless already changed)
+            if ($participation->getIdEvenement() === $this) {
+                $participation->setIdEvenement(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Annonce[]
+     */
+    public function getAnnonces(): Collection
+    {
+        return $this->annonces;
+    }
+
+    public function addAnnonce(Annonce $annonce): self
+    {
+        if (!$this->annonces->contains($annonce)) {
+            $this->annonces[] = $annonce;
+            $annonce->setIdEvenement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnonce(Annonce $annonce): self
+    {
+        if ($this->annonces->removeElement($annonce)) {
+            // set the owning side to null (unless already changed)
+            if ($annonce->getIdEvenement() === $this) {
+                $annonce->setIdEvenement(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
