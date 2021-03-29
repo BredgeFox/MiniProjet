@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for type in types %}
+    <table class="table text-center">
+        <h1>{{ type.libelleType }}</h1>
+        <tr>
+            <th class="active text-center">Titre</th>
+            <th class="active text-center">Description</th>
+            <th class="active text-center">Ville</th>
+            <th class="active text-center">Cotisation</th>
+            <th class="active text-center">Type</th>
+        </tr>
+
+        {% for evenement in evenements %}
+            <tr>
+                <td>
+                    <a href="{{ path('evenement.show', {id: evenement.id}) }}">
+                        {{ evenement.titre }}
+                    </a>
+                </td>
+                <td>{{ evenement.description }}</td>
+                <td>{{ evenement.ville }}</td>
+                <td>{{ evenement.cotisation }}</td>
+                <td>{{ evenement.idType.libelleType }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+    {% endfor %}
+{% endblock %}

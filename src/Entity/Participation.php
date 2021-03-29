@@ -12,17 +12,18 @@ class Participation
 {
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity=Utilisateur::class)
+     * @ORM\ManyToOne(targetEntity=Utilisateur::class, inversedBy="participations")
      * @ORM\JoinColumn(nullable=false)
      */
     private $idUtilisateur;
 
     /**
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity=Evenement::class)
+     * @ORM\ManyToOne(targetEntity=Evenement::class, inversedBy="participations")
      * @ORM\JoinColumn(nullable=false)
      */
     private $idEvenement;
+
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)

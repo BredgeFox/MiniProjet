@@ -17,11 +17,6 @@ class Annonce
      */
     private $id;
 
-    // /**
-    //  * @ORM\Column(type="integer")
-    //  */
-    // private $idAnnonce;
-
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -33,33 +28,21 @@ class Annonce
     private $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Evenement::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $idEvenement;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Utilisateur::class)
+     * @ORM\ManyToOne(targetEntity=Utilisateur::class, inversedBy="annonces")
      * @ORM\JoinColumn(nullable=false)
      */
     private $idUtilisateur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Evenement::class, inversedBy="annonces")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $idEvenement;
 
     public function getId(): ?int
     {
         return $this->id;
     }
-
-    // public function getIdAnnonce(): ?int
-    // {
-    //     return $this->idAnnonce;
-    // }
-    //
-    // public function setIdAnnonce(int $idAnnonce): self
-    // {
-    //     $this->idAnnonce = $idAnnonce;
-    //
-    //     return $this;
-    // }
 
     public function getContenu(): ?string
     {
@@ -85,6 +68,18 @@ class Annonce
         return $this;
     }
 
+    public function getIdUtilisateur(): ?Utilisateur
+    {
+        return $this->idUtilisateur;
+    }
+
+    public function setIdUtilisateur(?Utilisateur $idUtilisateur): self
+    {
+        $this->idUtilisateur = $idUtilisateur;
+
+        return $this;
+    }
+
     public function getIdEvenement(): ?Evenement
     {
         return $this->idEvenement;
@@ -97,15 +92,4 @@ class Annonce
         return $this;
     }
 
-    public function getIdUtilisateur(): ?Utilisateur
-    {
-        return $this->idUtilisateur;
-    }
-
-    public function setIdUtilisateur(?Utilisateur $idUtilisateur): self
-    {
-        $this->idUtilisateur = $idUtilisateur;
-
-        return $this;
-    }
 }

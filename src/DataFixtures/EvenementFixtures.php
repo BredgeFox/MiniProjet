@@ -96,6 +96,24 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
                 ->setIdOrganisateur($manager->merge($this->getReference('User-5')));
         $manager->persist($event5);
 
+        $event6 = new Evenement();
+        $description = <<< _lorem
+        Soirée d'ouverture de site de gestion des événement. Le dévelopement est encore en cour soyez indulgent ;D !
+        _lorem;
+        $event6 ->setTitre("Soirée d'inauguration du site")
+                ->setDescription($description)
+                ->setNbPlace(null)
+                ->setVille("Internet")
+                ->setAdresse("GestionEvenementANEM.fr")
+                ->setDateDebut(new \DateTime('07/03/2021 14:00:00'))
+                ->setDateFin(new \DateTime('07/03/2021 18:00:00'))
+                // ->setDateDebut(DATE(DateTime()))
+                // ->setDateFin(DATE(DateTime()))
+                ->setCotisation(0)
+                ->setIdType($manager->merge($this->getReference('Type-Plein-air')))
+                ->setIdOrganisateur($manager->merge($this->getReference('User-2')));
+        $manager->persist($event6);
+
         $manager->flush();
 
         $this->addReference('Evenement-1', $event1);
@@ -103,6 +121,7 @@ class EvenementFixtures extends Fixture implements DependentFixtureInterface
         $this->addReference('Evenement-3', $event3);
         $this->addReference('Evenement-4', $event4);
         $this->addReference('Evenement-5', $event5);
+        $this->addReference('Evenement-6', $event6);
 
     }
 

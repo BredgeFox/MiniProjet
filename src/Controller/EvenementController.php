@@ -44,21 +44,23 @@ class EvenementController extends AbstractController
       $evenements = $er->getEvenementNonExpires();
       return $this->render(
         'evenement/list.html.twig',
-        ['evenements' => $evenements]
+        ['evenements' => $evenements, 'date' => (new \DateTime)->format('Y-d-m'), 'time' => time()]
       );
     }
-    // public function list(EntityManagerInterface $em) : Response
-    // {
-    //  $query = $em->createQuery(
-    //  'SELECT s FROM App:Evenement s WHERE s.dateFin > :date'
-    //  )->setParameter('date', new \DateTime());
-    //  $evenements = $query->getResult();
-    //  return $this->render('evenement/list.html.twig', [
-    //  'evenements' => $evenements,
-    //  ]);
-    // }
 
-
+    /**
+     * Lister uniquement les evenements qui n'on pas encore expiré !
+     * @Route("/evenement", name="evenement.listExpire")
+     * @return Response
+     */
+    public function listExpire(EvenementRepository $er) : Response
+    {
+        $evenements = $er->getEvenementExpires();
+        return $this->render(
+            'evenement/list.html.twig',
+            ['evenements' => $evenements]
+        );
+    }
 
     /**
      * Chercher et afficher un evenement.

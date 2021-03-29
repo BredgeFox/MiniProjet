@@ -45,14 +45,32 @@ class Utilisateur
     private $Tel;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Role::class)
+     * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="utilisateurs")
      * @ORM\JoinColumn(nullable=false)
      */
     private $idRole;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Evenement::class, mappedBy="idOrganisateur")
+     */
+    private $evenements;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Participation::class, mappedBy="idUtilisateur")
+     */
+    private $participations;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="idUtilisateur")
+     */
+    private $annonces;
+
     public function __construct()
     {
         $this->idRole = new ArrayCollection();
+        $this->evenements = new ArrayCollection();
+        $this->participations = new ArrayCollection();
+        $this->annonces = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -131,4 +149,95 @@ class Utilisateur
 
         return $this;
     }
+
+    /**
+     * @return Collection|Evenement[]
+     */
+    public function getEvenements(): Collection
+    {
+        return $this->evenements;
+    }
+
+    public function addEvenement(Evenement $evenement): self
+    {
+        if (!$this->evenements->contains($evenement)) {
+            $this->evenements[] = $evenement;
+            $evenement->setIdOrganisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvenement(Evenement $evenement): self
+    {
+        if ($this->evenements->removeElement($evenement)) {
+            // set the owning side to null (unless already changed)
+            if ($evenement->getIdOrganisateur() === $this) {
+                $evenement->setIdOrganisateur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Participation[]
+     */
+    public function getParticipations(): Collection
+    {
+        return $this->participations;
+    }
+
+    public function addParticipation(Participation $participation): self
+    {
+        if (!$this->participations->contains($participation)) {
+            $this->participations[] = $participation;
+            $participation->setIdUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipation(Participation $participation): self
+    {
+        if ($this->participations->removeElement($participation)) {
+            // set the owning side to null (unless already changed)
+            if ($participation->getIdUtilisateur() === $this) {
+                $participation->setIdUtilisateur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Annonce[]
+     */
+    public function getAnnonces(): Collection
+    {
+        return $this->annonces;
+    }
+
+    public function addAnnonce(Annonce $annonce): self
+    {
+        if (!$this->annonces->contains($annonce)) {
+            $this->annonces[] = $annonce;
+            $annonce->setIdUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnonce(Annonce $annonce): self
+    {
+        if ($this->annonces->removeElement($annonce)) {
+            // set the owning side to null (unless already changed)
+            if ($annonce->getIdUtilisateur() === $this) {
+                $annonce->setIdUtilisateur(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
